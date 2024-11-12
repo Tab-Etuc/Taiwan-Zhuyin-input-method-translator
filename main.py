@@ -23,12 +23,13 @@ def main():
             message = input('請輸入欲翻譯的文字\n')
             message = FullWidthConverter.to_half_width(message)
             message = message + ' '
-            message = message.replace(' ', '=')            
+            message = message.replace(' ', '=') # 處理空格
+            message = message.replace(',', '%252C') # 處理逗號
             
             URL = f'https://www.google.com/inputtools/request?text={message}&ime=zh-hant-t-i0&cb=?'
 
             response = requests.get(url=URL)
-            response.raise_for_status()  # 檢查 HTTP 錯誤
+            response.raise_for_status() 
             
             result = response.json()
             translation = result[1][0][1][0]

@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bopomofo-translator"
+version = "1.0.0"
+description = "A tool to convert accidental Zhuyin alphanumeric input back to Traditional Chinese."
+readme = "README.md"
+authors = [
+  { name = "Tab Etuc", email = "xji.gl4.vu@gmail.com" },
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+requires-python = ">=3.7"
+dependencies = [
+    "requests",
+    "keyboard",
+    "pyperclip",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest",
+    "requests-mock",
+]
+
+[project.scripts]
+bopomofo = "bopomofo_translator.cli:main"
+bopomofo-monitor = "bopomofo_translator.monitor:main"
+
+[tool.setuptools.package-dir]
+"" = "src"
